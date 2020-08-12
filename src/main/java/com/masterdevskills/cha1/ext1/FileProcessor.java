@@ -22,8 +22,11 @@
 
 package com.masterdevskills.cha1.ext1;
 
+import javax.imageio.IIOException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -66,8 +69,7 @@ public class FileProcessor {
         // https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#removeIf-java.util.function.Predicate-
         // If the predicate returns true, it will be removed from the list.
         // If the predicate returns false, it will not removed.
-        listItems.removeIf(listItem -> listItem.length()<1);
-        System.out.println(listItems);
+        listItems.removeIf(listItem -> listItem.length() < 1);
 
         return listItems;
     }
@@ -82,8 +84,15 @@ public class FileProcessor {
      * @see String#join(CharSequence, CharSequence...)
      */
     public void writeToFile(List<String> lines, String fileName) {
+        try {
+            FileWriter fileWriter = new FileWriter(fileName);
+            String fileContents = String.join("\n", lines);
+            fileWriter.write(fileContents);
+            fileWriter.close();
 
-        throw new RuntimeException("Not Yet Implemented");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
