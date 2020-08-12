@@ -22,7 +22,11 @@
 
 package com.masterdevskills.cha1.ext1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.function.Predicate;
 
 /**
@@ -45,8 +49,27 @@ public class FileProcessor {
      * @see List#removeIf(Predicate)
      */
     public List<String> readFileFrom(String fileName) {
-        // just testing github CI
-        throw new RuntimeException("Not Yet Implemented");
+        List<String> listItems = new ArrayList<>();
+        try {
+            File file = new File(fileName);
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNext()) {
+                listItems.add(scanner.nextLine());
+            }
+            scanner.close();
+
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+        // https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#removeIf-java.util.function.Predicate-
+        // If the predicate returns true, it will be removed from the list.
+        // If the predicate returns false, it will not removed.
+        listItems.removeIf(listItem -> listItem.length()<1);
+        System.out.println(listItems);
+
+        return listItems;
     }
 
     /**
