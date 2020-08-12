@@ -61,6 +61,9 @@ public class LambdaExpression1 {
 	 * @see Predicate<String>
 	 */
 	public static String convertToUpperCase(String text) {
-		throw new RuntimeException("NotImplementedYet");
+
+		Function<String, String> func = str -> str.toUpperCase();
+
+		return func.apply(text);
 	}
 }
