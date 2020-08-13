@@ -23,6 +23,8 @@
 package com.masterdevskills.cha1.ext3;
 
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
@@ -65,7 +67,10 @@ public class Exercises {
 	 * @param people list of person
 	 * */
 	public static List<Person> sortItemByFirstNameOrderAscending(List<Person> people) {
-		throw new RuntimeException("NotYetImplemented");
+		Comparator<Person> personComparator = (p1,p2) -> p1.getFirstName().compareTo(p2.getFirstName());
+		Collections.sort(people, personComparator);
+
+		return people;
 	}
 
 	/**
