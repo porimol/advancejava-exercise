@@ -79,8 +79,8 @@ public class Exercises {
 	 * @param people list of person
 	 */
 	public static List<Person> sortByLastNameOrderDescending(List<Person> people) {
-		Comparator<Person> personComparator = (p1,p2) -> p1.getLastName().compareTo(p2.getLastName());
-		Collections.sort(people, personComparator);
+		Comparator<Person> personComparator = (p1, p2) -> p2.getLastName().compareTo(p1.getLastName());
+		people.sort(personComparator);
 
 		return people;
 	}
@@ -94,10 +94,14 @@ public class Exercises {
 	 */
 	public static List<Person> sortByFirstNameAndThenLastNameAndThenAge(List<Person> people) {
 		Comparator<Person> personComparator = (p1, p2) -> {
-			if (p1.getLastName().compareTo(p2.getFirstName()) == 0) {
-				return p1.getFirstName().compareTo(p2.getFirstName());
+			if(p1.getFirstName().compareTo(p2.getFirstName()) == 0) {
+				if(p1.getLastName().compareTo(p2.getLastName()) == 0) {
+					return p1.getAge() - p2.getAge();
+				} else {
+					return p1.getLastName().compareTo(p2.getLastName());
+				}
 			} else {
-				return p1.getLastName().compareTo(p2.getLastName());
+				return p1.getFirstName().compareTo(p2.getFirstName());
 			}
 		};
 		Collections.sort(people, personComparator);
