@@ -43,7 +43,7 @@ public class Users {
 	 * @see User#setStatus(Status)
 	 */
 	public static void activatedAll(List<User> users, Status status) {
-		throw new RuntimeException("NotImplemented");
+		users.forEach(user -> user.setStatus(status));
 	}
 
 	/**
