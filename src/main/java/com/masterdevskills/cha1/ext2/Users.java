@@ -58,6 +58,13 @@ public class Users {
 
 	public static String makeStringOfAllUsernames(List<User> users) {
 
-		throw new RuntimeException("NotImplemented");
+		StringJoiner stringJoiner = new StringJoiner(",");
+		for (int index = 0; index < users.size(); index++) {
+			var userString = users.get(index).toString();
+			stringJoiner.add(userString);
+		}
+		var userString = stringJoiner.toString();
+
+		return userString;
 	}
 }
