@@ -79,7 +79,10 @@ public class Exercises {
 	 * @param people list of person
 	 */
 	public static List<Person> sortByLastNameOrderDescending(List<Person> people) {
-		throw new RuntimeException("NotYetImplemented");
+		Comparator<Person> personComparator = (p1,p2) -> p1.getLastName().compareTo(p2.getLastName());
+		Collections.sort(people, personComparator);
+
+		return people;
 	}
 
 	/**
