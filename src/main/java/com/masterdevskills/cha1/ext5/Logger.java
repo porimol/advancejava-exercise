@@ -55,6 +55,26 @@ public class Logger implements Log {
         }
     }
 
+    @Override
+    public void trace(final String message, final Supplier<Object[]> params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params.get()));
+        }
+    }
+
+    @Override
+    public void debug(final String message, final Supplier<Object[]> params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params.get()));
+        }
+    }
+
+    public void warn(final String message, final Supplier<Object[]> params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params.get()));
+        }
+    }
+
     public Logger setEnabled(final boolean enabled) {
         this.enabled = enabled;
         return this;
