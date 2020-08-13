@@ -54,7 +54,9 @@ public class Exercises {
 	 * @see List#replaceAll(UnaryOperator)
 	 */
 	public static List<String> addSuffix(List<String> items, String suffix) {
-		throw new RuntimeException("NotYetImplemented");
+		items.replaceAll(item -> item+suffix);
+
+		return items;
 	}
 
 	/***
